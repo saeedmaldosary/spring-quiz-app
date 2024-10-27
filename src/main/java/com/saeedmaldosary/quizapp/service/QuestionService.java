@@ -3,6 +3,8 @@ package com.saeedmaldosary.quizapp.service;
 import com.saeedmaldosary.quizapp.Question;
 import com.saeedmaldosary.quizapp.dao.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,16 +15,33 @@ public class QuestionService {
     @Autowired
     QuestionDao questionDao;
 
-    public List<Question> getAllQuestions() {
-        return questionDao.findAll();
+    public ResponseEntity<List<Question>> getAllQuestions() {
+        try {
+            return new ResponseEntity<>(questionDao.findAll(), HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public List<Question> getQuestionsByCategory(String category) {
-        return questionDao.findByCategory(category);
+    public ResponseEntity<List<Question>> getQuestionsByCategory(String category) {
+        try {
+            List<Question> questions = questionDao.findByCategory(category);
+            if (questions.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(questions, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public String addQuestion(Question question) {
-        questionDao.save(question);
-        return "Question added";
+    public ResponseEntity<String> addQuestion(Question question) {
+        try {
+            questionDao.save(question);
+            return new ResponseEntity<>("Question added", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error adding question", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
