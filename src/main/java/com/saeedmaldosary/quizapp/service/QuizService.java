@@ -1,8 +1,8 @@
 package com.saeedmaldosary.quizapp.service;
 
-import com.saeedmaldosary.quizapp.Question;
-import com.saeedmaldosary.quizapp.QuestionWrapper;
-import com.saeedmaldosary.quizapp.Quiz;
+import com.saeedmaldosary.quizapp.model.Question;
+import com.saeedmaldosary.quizapp.model.QuestionWrapper;
+import com.saeedmaldosary.quizapp.model.Quiz;
 import com.saeedmaldosary.quizapp.Response;
 import com.saeedmaldosary.quizapp.dao.QuestionDao;
 import com.saeedmaldosary.quizapp.dao.QuizDao;

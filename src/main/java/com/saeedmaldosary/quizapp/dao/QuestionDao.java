@@ -1,6 +1,6 @@
 package com.saeedmaldosary.quizapp.dao;
 
-import com.saeedmaldosary.quizapp.Question;
+import com.saeedmaldosary.quizapp.model.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

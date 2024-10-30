@@ -1,11 +1,9 @@
 package com.saeedmaldosary.quizapp.controller;
 
-import com.saeedmaldosary.quizapp.Question;
-import com.saeedmaldosary.quizapp.QuestionWrapper;
+import com.saeedmaldosary.quizapp.model.QuestionWrapper;
 import com.saeedmaldosary.quizapp.Response;
 import com.saeedmaldosary.quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

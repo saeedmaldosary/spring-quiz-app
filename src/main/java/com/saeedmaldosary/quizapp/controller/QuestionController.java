@@ -1,6 +1,6 @@
 package com.saeedmaldosary.quizapp.controller;
 
-import com.saeedmaldosary.quizapp.Question;
+import com.saeedmaldosary.quizapp.model.Question;
 import com.saeedmaldosary.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
