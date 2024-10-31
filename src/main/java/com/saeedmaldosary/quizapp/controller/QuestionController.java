@@ -4,6 +4,7 @@ import com.saeedmaldosary.quizapp.model.Question;
 import com.saeedmaldosary.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -42,6 +43,7 @@ public class QuestionController {
                     content = @Content
             )
     })
+    @PreAuthorize("hasRole('CLIENT_ADMIN')")
     @GetMapping("all")
     public ResponseEntity<List<Question>> getAllQuestions() {
         return questionService.getAllQuestions();

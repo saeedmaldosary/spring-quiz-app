@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: quizapp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/quizappdb
+    username: ${DB_USERNAME:postgres}
+    password: 11
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/quizapp
+          jwk-set-uri: http://localhost:9090/realms/quizapp/protocol/openid-connect/certs
+
+server:
+  port: 9095
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    path: /v3/api-docs
+
+jwt:
+  auth:
+    converter:
+      resource-id: quizapp-rest-api
